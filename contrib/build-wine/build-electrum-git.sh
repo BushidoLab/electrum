@@ -16,6 +16,7 @@ PYTHON="wine $PYHOME/python.exe -OO -B"
 cd `dirname $0`
 set -e
 
+mkdir -p tmp
 cd tmp
 
 for repo in electrum electrum-locale electrum-icons; do
@@ -25,7 +26,7 @@ for repo in electrum electrum-locale electrum-icons; do
 	git checkout master
 	cd ..
     else
-	URL=https://github.com/spesmilo/$repo.git
+	URL=https://github.com/snowgem/$repo.git
 	git clone -b master $URL $repo
     fi
 done
@@ -55,7 +56,9 @@ cp -r electrum-locale/locale $WINEPREFIX/drive_c/electrum/lib/
 cp electrum-icons/icons_rc.py $WINEPREFIX/drive_c/electrum/gui/qt/
 
 # Install frozen dependencies
-$PYTHON -m pip install -r ../../requirements.txt
+$PYTHON -m pip install -r ../../deterministic-build/requirements.txt
+
+$PYTHON -m pip install -r ../../deterministic-build/requirements-hw.txt
 
 pushd $WINEPREFIX/drive_c/electrum
 $PYTHON setup.py install
