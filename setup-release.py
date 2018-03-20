@@ -16,7 +16,7 @@ from lib.version import ELECTRUM_VERSION as version
 CERT_PATH = requests.certs.where()
 
 name = "Electrum ZCL"
-mainscript = 'electrum-zcl'
+mainscript = 'electrum'
 
 plist = Plist.fromFile('Info.plist')
 plist.update(dict(CFBundleIconFile='icons/electrum.icns'))
