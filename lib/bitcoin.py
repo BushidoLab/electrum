@@ -77,18 +77,17 @@ class NetworkConstants:
     def set_mainnet(cls):
         cls.TESTNET = False
         cls.WIF_PREFIX = 0x80
-        cls.ADDRTYPE_P2PKH = [0x1C, 0xB8]
-        cls.ADDRTYPE_P2SH = [0x1C, 0xBD]
+        cls.ADDRTYPE_P2PKH = [0x1C, 0x28]
+        cls.ADDRTYPE_P2SH = [0x1C, 0x2D]
         cls.ADDRTYPE_SHIELDED = [0x16, 0x9A]
         cls.SEGWIT_HRP = "bc" #TODO zcl has no segwit
-        cls.GENESIS = "0007104ccda289427919efc39dc9e4d499804b7bebc22df55f8b834301260602"
+        cls.GENESIS = "00068b35729d9d2b0c294ff1fe9af0094740524311a131de40e7f705e4c29a5b"
         cls.DEFAULT_PORTS = {'t': '50001', 's': '50002'}
         cls.DEFAULT_SERVERS = read_json('servers.json', {})
         cls.CHECKPOINTS = read_json('checkpoints.json', [])
         cls.EQUIHASH_N = 200
         cls.EQUIHASH_K = 9
-        cls.HEADERS_URL = "http://headers.zcl-electrum.com/blockchain_headers"
-
+        cls.HEADERS_URL = ""
         cls.CHUNK_SIZE = 200
 
     # https://github.com/z-classic/zclassic/blob/master/src/chainparams.cpp#L234
@@ -100,7 +99,7 @@ class NetworkConstants:
         cls.ADDRTYPE_P2SH = [0x1C, 0xBA]
         cls.ADDRTYPE_SHIELDED = [0x16, 0xB6]
         cls.SEGWIT_HRP = "tb" #TODO zcl has no segwit
-        cls.GENESIS = "03e1c4bb705c871bf9bfda3e74b7f8f86bff267993c215a89d5795e3708e5e1f"
+        cls.GENESIS = "0739bced3341885cf221cf22b5e91cdb0f5da3cb34da982167c4c900723c725a"
         cls.DEFAULT_PORTS = {'t': '51001', 's': '51002'}
         cls.DEFAULT_SERVERS = read_json('servers_testnet.json', {})
         cls.CHECKPOINTS = read_json('checkpoints_testnet.json', [])
