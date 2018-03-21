@@ -432,28 +432,15 @@ def time_difference(distance_in_time, include_seconds):
 
 # For raw json, append /insight-api-zcash
 mainnet_block_explorers = {
-    'zcl-explorer.com': ('https://zcl-explorer.com',
+    'insight.snowgem.org': ('https://insight.snowgem.org',
                         {'tx': 'tx', 'addr': 'address'}),
-    'eu1.zcl-explorer.com': ('https://eu1.zcl-explorer.com',
-                        {'tx': 'tx', 'addr': 'address'}),
-    'as1.zcl-explorer.com': ('https://as1.zcl-explorer.com',
-                        {'tx': 'tx', 'addr': 'address'}),
-    'explorer.zclassic.org': ('https://explorer.zclassic.org',
-                        {'tx': 'tx', 'addr': 'address'}),
-    'zclzclzcl.com': ('https://zclzclzcl.com',
-                        {'tx': 'tx', 'addr': 'address'}),
+    'system default': ('blockchain:',
+                        {'tx': 'tx', 'addr': 'address'})
+
 }
 
-#http://zcl-explorer.com/insight/
-#http://zclzclzcl.com
-#http://eu1.zcl-explorer.com
-#http://as1.zcl-explorer.com
-#http://explorer.zclassic.org
-#http://explorer1.zclassic.org
 
 testnet_block_explorers = {
-    #'testnet.zclassic.org': ('https://testnet.zclassic.org',
-                       #{'tx': 'tx', 'addr': 'address'}),
     'system default': ('blockchain:',
                        {'tx': 'tx', 'addr': 'address'})
 }
@@ -463,7 +450,7 @@ def block_explorer_info():
     return testnet_block_explorers if bitcoin.NetworkConstants.TESTNET else mainnet_block_explorers
 
 def block_explorer(config):
-    return config.get('block_explorer', 'zcl-explorer.com')
+    return config.get('block_explorer', 'insight.snowgem.org')
 
 def block_explorer_tuple(config):
     return block_explorer_info().get(block_explorer(config))

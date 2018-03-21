@@ -87,7 +87,7 @@ class NetworkConstants:
         cls.CHECKPOINTS = read_json('checkpoints.json', [])
         cls.EQUIHASH_N = 200
         cls.EQUIHASH_K = 9
-        cls.HEADERS_URL = ""
+        cls.HEADERS_URL = "https://snowgem.org/electrum/blockchain_headers"
         cls.CHUNK_SIZE = 200
 
     # https://github.com/z-classic/zclassic/blob/master/src/chainparams.cpp#L234
