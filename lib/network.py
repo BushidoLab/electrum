@@ -284,6 +284,9 @@ class Network(util.DaemonThread):
     def is_connecting(self):
         return self.connection_status == 'connecting'
 
+    def is_downloading(self):
+        return self.connection_status == 'downloading'
+
     def is_up_to_date(self):
         return self.unanswered_requests == {}
 
@@ -959,6 +962,7 @@ class Network(util.DaemonThread):
                 import urllib, socket
                 socket.setdefaulttimeout(30)
                 self.print_error("downloading ", NetworkConstants.HEADERS_URL)
+                self.set_status("downloading")
                 urllib.request.urlretrieve(NetworkConstants.HEADERS_URL, filename)
                 self.print_error("done.")
             except Exception:
