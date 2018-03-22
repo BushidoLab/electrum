@@ -91,13 +91,13 @@ class ExchangeBase(PrintError):
 class CryptoCompare(ExchangeBase):
     def get_rates(self, ccy):
         json = self.get_json('min-api.cryptocompare.com',
-                             "/data/pricehistorical?fsym=ZCL&tsyms=USD")
-        return {'USD': Decimal(json['ZCL']['USD'])}
+                             "/data/pricehistorical?fsym=SNG&tsyms=USD")
+        return {'USD': Decimal(json['SNG']['USD'])}
 
 class CoinMarketCap(ExchangeBase):
     def get_rates(self, ccy):
         json = self.get_json('api.coinmarketcap.com',
-                             "/v1/ticker/zclassic?convert=%s")
+                             "/v1/ticker/snowgem?convert=%s")
         return {'USD': Decimal(json[0]['price_usd'])}
 
 

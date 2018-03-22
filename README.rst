@@ -1,7 +1,7 @@
-ZCL Electrum - Zclassic Electrum (Lite) Client
+SNG Electrum - SnowGem Electrum (Lite) Client
 ==============================================
 
-Latest Release: https://github.com/BTCP-community/electrum-zcl/releases/
+Latest Release: https://github.com/Snowgem/electrum/releases
 
 
 Viewing & Sending from Z addresses is not yet supported on this wallet.
@@ -9,22 +9,22 @@ Viewing & Sending from Z addresses is not yet supported on this wallet.
 
 Know about your data directory::
 
-    Linux + Mac: ~/.electrum-zcl/
-    Windows: C:\Users\YourUserName\AppData\Roaming\Electrum-zcl\
+    Linux + Mac: ~/.electrum-sng/
+    Windows: C:\Users\YourUserName\AppData\Roaming\Electrum-sng\
 
-    ~/.electrum-zcl/wallets/ has your wallet files - BACK UP THIS FOLDER
+    ~/.electrum-sng/wallets/ has your wallet files - BACK UP THIS FOLDER
 
 You can also use 'Export Private Keys' and 'Show Seed' from inside the application to write down and store your funds.
 
-Please use the issue tracker for bug reports, feature requests, and other mission-critical information. It is actively monitored by the Zclassic development team. For general support, please visit our Discord: https://discord.gg/2PRZ5q
+Please use the issue tracker for bug reports, feature requests, and other mission-critical information. It is actively monitored by the SnowGem development team. For general support, please visit our Discord: https://discord.gg/2PRZ5q
 
 Development Version
 ===================
 
 First, clone from Github::
 
-    git clone https://github.com/BTCP-community/electrum-zcl
-    cd electrum-zcl
+    git clone https://github.com/Snowgem/electrum
+    cd electrum
 
 For Mac:
 --------
@@ -50,7 +50,7 @@ Using Homebrew::
     ./create-dmg
 
     # Run the .app in dist/, or
-    ./electrum-zcl
+    ./electrum-sng
 
 For Linux:
 ----------
@@ -86,7 +86,7 @@ Create translations (optional)::
 
 Run::
 
-    ./electrum-zcl
+    ./electrum-sng
 
 
 For Linux with docker:
@@ -132,10 +132,10 @@ To just create binaries, create the 'packages/' directory::
 
     ./contrib/make_packages
 
-(This directory contains the Python dependencies used by Electrum-ZCL.)
+(This directory contains the Python dependencies used by Electrum-SNG.)
 
 
-ZCL Hints and Debug
+SNG Hints and Debug
 ===================
 
 There are several useful scripts in::
@@ -146,16 +146,6 @@ Here is a good initial check to determine whether things are working (should suc
 
     cd scripts
     python3 block_headers
-
---
-
-The Zclassic Wiki is located at: https://github.com/z-classic/zclassic/wiki. Please use this as a reference and feel free to contribute.
-
-There is also an Electrum-ZCL wiki at: https://github.com/BTCP-community/electrum-zcl/wiki. It contains information about setting up the ElectrumX Server (https://github.com/BTCP-community/electrumx), which is the provider for block and peer data.
-
---
-
-Here is our roadmap for zk-SNARKs integration: https://github.com/BTCP-community/electrum-zcl/wiki/Shielded-Transactions
 
 
 Original Project Info
@@ -181,6 +171,6 @@ Original Project Info
 
 ---
 
-The Zclassic Team
+The SnowGem Team
 
-ZCL: t1gsePJZ6ojJYygj3PWMGJfojPUoMd5AVfU
+SNG: t1gsePJZ6ojJYygj3PWMGJfojPUoMd5AVfU

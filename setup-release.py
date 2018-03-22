@@ -15,7 +15,7 @@ from lib.version import ELECTRUM_VERSION as version
 
 CERT_PATH = requests.certs.where()
 
-name = "Electrum ZCL"
+name = "Electrum SNG"
 mainscript = 'electrum'
 
 plist = Plist.fromFile('Info.plist')
@@ -29,28 +29,28 @@ extra_options = dict(
     setup_requires=['py2app'],
     app=[mainscript],
     packages=[
-        'electrum-zcl',
-        'electrum-zcl_gui',
-        'electrum-zcl_gui.qt',
-        'electrum-zcl_plugins',
-        'electrum-zcl_plugins.audio_modem',
-        'electrum-zcl_plugins.cosigner_pool',
-        'electrum-zcl_plugins.email_requests',
-        'electrum-zcl_plugins.greenaddress_instant',
-        'electrum-zcl_plugins.hw_wallet',
-        'electrum-zcl_plugins.keepkey',
-        'electrum-zcl_plugins.labels',
-        'electrum-zcl_plugins.ledger',
-        'electrum-zcl_plugins.trezor',
-        'electrum-zcl_plugins.digitalbitbox',
-        'electrum-zcl_plugins.trustedcoin',
-        'electrum-zcl_plugins.virtualkeyboard',
+        'electrum-sng',
+        'electrum-sng_gui',
+        'electrum-sng_gui.qt',
+        'electrum-sng_plugins',
+        'electrum-sng_plugins.audio_modem',
+        'electrum-sng_plugins.cosigner_pool',
+        'electrum-sng_plugins.email_requests',
+        'electrum-sng_plugins.greenaddress_instant',
+        'electrum-sng_plugins.hw_wallet',
+        'electrum-sng_plugins.keepkey',
+        'electrum-sng_plugins.labels',
+        'electrum-sng_plugins.ledger',
+        'electrum-sng_plugins.trezor',
+        'electrum-sng_plugins.digitalbitbox',
+        'electrum-sng_plugins.trustedcoin',
+        'electrum-sng_plugins.virtualkeyboard',
 
     ],
     package_dir={
-        'electrum-zcl': 'lib',
-        'electrum-zcl_gui': 'gui',
-        'electrum-zcl_plugins': 'plugins'
+        'electrum-sng': 'lib',
+        'electrum-sng_gui': 'gui',
+        'electrum-sng_plugins': 'plugins'
     },
     data_files=[CERT_PATH],
     options=dict(py2app=dict(argv_emulation=False,
