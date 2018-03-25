@@ -1,13 +1,13 @@
 [app]
 
 # (str) Title of your application
-title = Electrum
+title = SnowGem Electrum
 
 # (str) Package name
-package.name = Electrum
+package.name = SnowGemElectrum
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.electrum
+package.domain = org.snowgemelectrum
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -24,14 +24,14 @@ source.exclude_dirs = bin, build, dist, contrib, gui/qt, gui/kivy/tools, gui/kiv
 source.exclude_patterns = Makefile,setup*
 
 # (str) Application versioning (method 1)
-version.regex = version_apk = '(.*)'
-version.filename = %(source.dir)s/contrib/versions.py
+#version.regex = version_apk = '(.*)'
+#version.filename = %(source.dir)s/contrib/versions.py
 
 # (str) Application versioning (method 2)
-#version = 1.9.8
+version = 1.0.5
 
 # (list) Application requirements
-requirements = python3crystax, android, openssl, plyer, kivy==master
+requirements = python3crystax==3.6, android, openssl, plyer, kivy==master
 
 # (str) Presplash of the application
 #presplash.filename = %(source.dir)s/gui/kivy/theming/splash.png
@@ -91,7 +91,7 @@ android.add_src = gui/kivy/data/java-classes/
 
 android.gradle_dependencies = me.dm7.barcodescanner:zxing:1.9.8
 
-android.add_activities = org.electrum.qr.SimpleScannerActivity
+android.add_activities = org.snowgemelectrum.qr.SimpleScannerActivity
 
 # (str) python-for-android branch to use, if not master, useful to try
 # not yet merged features.
