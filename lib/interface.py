@@ -31,9 +31,11 @@ import threading
 import time
 import traceback
 
-from .util import print_error, get_cert_path
+import requests
 
-ca_path = get_cert_path()
+from .util import print_error
+
+ca_path = requests.certs.where()
 
 from . import util
 from . import x509
@@ -82,7 +84,7 @@ class TcpConnection(threading.Thread, util.PrintError):
             return False
         if 'subjectAltName' in peercert:
             for typ, val in peercert["subjectAltName"]:
-                if typ == "DNS": # and val == name:
+                if typ == "DNS" and val == name:
                     return True
         else:
             # Only check the subject DN if there is no subject alternative
@@ -142,7 +144,7 @@ class TcpConnection(threading.Thread, util.PrintError):
                     context = self.get_ssl_context(cert_reqs=ssl.CERT_REQUIRED, ca_certs=ca_path)
                     s = context.wrap_socket(s, do_handshake_on_connect=True)
                 except ssl.SSLError as e:
-                    print_error(e)
+                    self.print_error(e)
                     s = None
                 except:
                     return
@@ -170,8 +172,10 @@ class TcpConnection(threading.Thread, util.PrintError):
                 # workaround android bug
                 cert = re.sub("([^\n])-----END CERTIFICATE-----","\\1\n-----END CERTIFICATE-----",cert)
                 temporary_path = cert_path + '.temp'
-                with open(temporary_path,"w") as f:
+                with open(temporary_path, "w", encoding='utf-8') as f:
                     f.write(cert)
+                    f.flush()
+                    os.fsync(f.fileno())
             else:
                 is_new = False
 
@@ -197,7 +201,7 @@ class TcpConnection(threading.Thread, util.PrintError):
                         os.unlink(rej)
                     os.rename(temporary_path, rej)
                 else:
-                    with open(cert_path) as f:
+                    with open(cert_path, encoding='utf-8') as f:
                         cert = f.read()
                     try:
                         b = pem.dePem(cert, 'CERTIFICATE')
@@ -394,7 +398,7 @@ def test_certificates():
     certs = os.listdir(mydir)
     for c in certs:
         p = os.path.join(mydir,c)
-        with open(p) as f:
+        with open(p, encoding='utf-8') as f:
             cert = f.read()
         check_cert(c, cert)
 

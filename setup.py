@@ -9,23 +9,13 @@ import platform
 import imp
 import argparse
 
+with open('contrib/requirements/requirements.txt') as f:
+    requirements = f.read().splitlines()
+
+with open('contrib/requirements/requirements-hw.txt') as f:
+    requirements_hw = f.read().splitlines()
+
 version = imp.load_source('version', 'lib/version.py')
-
-
-def readhere(path):
-    here = os.path.abspath(os.path.dirname(__file__))
-    with open(os.path.join(here, path), 'r') as fd:
-        return fd.read()
-
-
-def readreqs(path):
-    return [req for req in
-            [line.strip() for line in readhere(path).split('\n')]
-            if req and not req.startswith(('#', '-r'))]
-
-
-install_requires = readreqs('requirements.txt')
-tests_requires = install_requires + readreqs('requirements_travis.txt')
 
 if sys.version_info[:3] < (3, 4, 0):
     sys.exit("Error: Electrum requires Python version >= 3.4.0...")
@@ -37,22 +27,23 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
     parser.add_argument('--root=', dest='root_path', metavar='dir', default='/')
     opts, _ = parser.parse_known_args(sys.argv[1:])
     usr_share = os.path.join(sys.prefix, "share")
+    icons_dirname = 'pixmaps'
     if not os.access(opts.root_path + usr_share, os.W_OK) and \
        not os.access(opts.root_path, os.W_OK):
+        icons_dirname = 'icons'
         if 'XDG_DATA_HOME' in os.environ.keys():
             usr_share = os.environ['XDG_DATA_HOME']
         else:
             usr_share = os.path.expanduser('~/.local/share')
     data_files += [
         (os.path.join(usr_share, 'applications/'), ['electrum.desktop']),
-        (os.path.join(usr_share, 'pixmaps/'), ['icons/electrum.png'])
+        (os.path.join(usr_share, icons_dirname), ['icons/electrum.png'])
     ]
 
 setup(
-    name="Electrum-SNG",
+    name="Electrum",
     version=version.ELECTRUM_VERSION,
-    install_requires=install_requires,
-    tests_require=tests_requires,
+    install_requires=requirements,
     packages=[
         'electrum',
         'electrum_gui',
@@ -90,10 +81,15 @@ setup(
     },
     scripts=['electrum'],
     data_files=data_files,
-    description="Lightweight SnowGem Wallet",
-    author="SnowGem Community",
-    author_email="ceo@snowgem.org",
+    description="Lightweight Bitcoin Wallet",
+    author="Thomas Voegtlin",
+    author_email="thomasv@electrum.org",
     license="MIT Licence",
-    url="https://snowgem.org",
-    long_description="""Lightweight SnowGem Wallet"""
+    url="https://electrum.org",
+    long_description="""Lightweight Bitcoin Wallet"""
 )
+
+# Optional modules (not required to run Electrum)
+import pip
+opt_modules = requirements_hw + ['pycryptodomex']
+[ pip.main(['install', m]) for m in opt_modules ]

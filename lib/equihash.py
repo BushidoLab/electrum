@@ -1,4 +1,5 @@
 # ZCASH implementation: https://github.com/zcash/zcash/blob/master/qa/rpc-tests/test_framework/equihash.py
+
 from pyblake2 import blake2b
 from operator import itemgetter
 import struct

@@ -23,16 +23,17 @@
 # CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from .util import *
 from electrum.i18n import _
 from electrum.util import format_time
 
+from .util import *
+
 
 class InvoiceList(MyTreeWidget):
-    filter_columns = [0, 1, 2, 3]  # Date, Requested By, Description, Amount
+    filter_columns = [0, 1, 2, 3]  # Date, Requestor, Description, Amount
 
     def __init__(self, parent):
-        MyTreeWidget.__init__(self, parent, self.create_menu, [_('Expires'), _('Requested By'), _('Description'), _('Amount'), _('Status')], 2)
+        MyTreeWidget.__init__(self, parent, self.create_menu, [_('Expires'), _('Requestor'), _('Description'), _('Amount'), _('Status')], 2)
         self.setSortingEnabled(True)
         self.header().setSectionResizeMode(1, QHeaderView.Interactive)
         self.setColumnWidth(1, 200)
@@ -57,12 +58,10 @@ class InvoiceList(MyTreeWidget):
         self.parent.invoices_label.setVisible(len(inv_list))
 
     def import_invoices(self):
-        wallet_folder = self.parent.get_wallet_folder()
-        filename, __ = QFileDialog.getOpenFileName(self.parent, "Select your wallet file", wallet_folder)
-        if not filename:
-            return
-        self.parent.invoices.import_file(filename)
-        self.on_update()
+        import_meta_gui(self.parent, _('invoices'), self.parent.invoices.import_file, self.on_update)
+
+    def export_invoices(self):
+        export_meta_gui(self.parent, _('invoices'), self.parent.invoices.export_file)
 
     def create_menu(self, position):
         menu = QMenu()
@@ -76,7 +75,7 @@ class InvoiceList(MyTreeWidget):
         pr = self.parent.invoices.get(key)
         status = self.parent.invoices.get_status(key)
         if column_data:
-            menu.addAction(_("Copy %s")%column_title, lambda: self.parent.app.clipboard().setText(column_data))
+            menu.addAction(_("Copy {}").format(column_title), lambda: self.parent.app.clipboard().setText(column_data))
         menu.addAction(_("Details"), lambda: self.parent.show_invoice(key))
         if status == PR_UNPAID:
             menu.addAction(_("Pay Now"), lambda: self.parent.do_pay_invoice(key))
