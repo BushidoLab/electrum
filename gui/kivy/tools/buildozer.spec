@@ -1,13 +1,13 @@
 [app]
 
 # (str) Title of your application
-title = Electrum
+title = SnowGem Electrum
 
 # (str) Package name
-package.name = Electrum
+package.name = Electrum_SNG
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.electrum
+package.domain = org.electrum_sng
 
 # (str) Source code where the main.py live
 source.dir = .
