@@ -17,7 +17,7 @@
 
  * Memory-pool based fee estimation. Dynamic fees can target a desired
    depth in the memory pool. This feature is optional, and ETA-based
-   estimates from Bitcoin Core are still available. Note that miners
+   estimates from SnowGem Core are still available. Note that miners
    could exploit this feature, if they conspired and filled the memory
    pool with expensive transactions that never get mined. However,
    since the Electrum client already trusts an Electrum server with
@@ -219,7 +219,7 @@ issue #3374. Users should upgrade to 3.0.5.
 # Release 2.9 - Independence (July 27th, 2017)
   * Multiple Chain Validation: Electrum will download and validate
     block headers sent by servers that may follow different branches
-    of a fork in the Bitcoin blockchain. Instead of a linear sequence,
+    of a fork in the SnowGem blockchain. Instead of a linear sequence,
     block headers are organized in a tree structure. Branching points
     are located efficiently using binary search. The purpose of MCV is
     to detect and handle blockchain forks that are invisible to the
@@ -389,7 +389,7 @@ issue #3374. Users should upgrade to 3.0.5.
    wallet that has several accounts. Make sure that you have saved
    your seed phrase before you upgrade Electrum.
  * This version introduces a separation between wallets types and
-   keystores types. 'Wallet type' defines the type of Bitcoin contract
+   keystores types. 'Wallet type' defines the type of SnowGem contract
    used in the wallet, while 'keystore type' refers to the method used
    to store private keys. Therefore, so-called 'hardware wallets' will
    be referred to as 'hardware keystores'.
@@ -526,13 +526,13 @@ issue #3374. Users should upgrade to 3.0.5.
  * Various GUI improvements
 
 # Release 2.4
- * Payment to DNS names storing a Bitcoin addresses (OpenAlias) is
+ * Payment to DNS names storing a SnowGem addresses (OpenAlias) is
    supported directly, without activating a plugin. The verification
    uses DNSSEC.
  * The DNSSEC verification code was rewritten. The previous code,
    which was part of the OpenAlias plugin, is vulnerable and should
    not be trusted (Electrum 2.0 to 2.3).
- * Payment requests can be signed using Bitcoin addresses stored
+ * Payment requests can be signed using SnowGem addresses stored
    in DNS (OpenAlias). The identity of the requestor is verified using
    DNSSEC.
  * Payment requests signed with OpenAlias keys can be shared as
@@ -763,7 +763,7 @@ issue #3374. Users should upgrade to 3.0.5.
 
 # Release 1.9.6
 * During wallet creation, do not write seed to disk until it is encrypted.
-* Confirmation dialog if the transaction fee is higher than 1mBTC.
+* Confirmation dialog if the transaction fee is higher than 1mSNG.
 * bugfixes
 
 # Release 1.9.5
@@ -825,7 +825,7 @@ bugfixes: connection problems, transactions staying unverified
 
 # Release 1.7.3:
 
-* Classic GUI can display amounts in mBTC
+* Classic GUI can display amounts in mSNG
 * Account selector in the classic GUI
 * Changed the way the portable flag uses without supplying a -w argument
 * Classic GUI asks users to enter their seed on wallet creation
@@ -835,7 +835,7 @@ bugfixes: connection problems, transactions staying unverified
 
 * Transactions that are in the same block are displayed in chronological order in the history.
 * The client computes transaction priority and rejects zero-fee transactions that need a fee.
-* The default fee was lowered to 200 uBTC per kb.
+* The default fee was lowered to 200 uSNG per kb.
 * Due to an internal format change, your history may be pruned when
   you open your wallet for the first time after upgrading to 1.7.2. If
   this is the case, please visit a full server to restore your full

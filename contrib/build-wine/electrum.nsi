@@ -8,7 +8,7 @@
 
   !define PRODUCT_NAME "SnowGem Electrum"
   !define PRODUCT_WEB_SITE "https://github.com/snowgem/electrum"
-  !define PRODUCT_PUBLISHER "Electrum Technologies GmbH"
+  !define PRODUCT_PUBLISHER "SnowGem Electrum Technologies"
   !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 
 ;--------------------------------

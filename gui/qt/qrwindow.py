@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #
-# Electrum - lightweight Bitcoin client
+# Electrum - lightweight SnowGem client
 # Copyright (C) 2014 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -46,7 +46,7 @@ class QR_Window(QWidget):
     def __init__(self, win):
         QWidget.__init__(self)
         self.win = win
-        self.setWindowTitle('Electrum - '+_('Payment Request'))
+        self.setWindowTitle('SnowGem Electrum - '+_('Payment Request'))
         self.setMinimumSize(800, 250)
         self.address = ''
         self.label = ''

@@ -1,4 +1,4 @@
-# Electrum - lightweight Bitcoin client
+# Electrum - lightweight SnowGem client
 # Copyright (C) 2011 Thomas Voegtlin
 #
 # Permission is hereby granted, free of charge, to any person
@@ -40,7 +40,7 @@ def inv_dict(d):
     return {v: k for k, v in d.items()}
 
 
-base_units = {'BTC':8, 'mBTC':5, 'uBTC':2}
+base_units = {'SNG':8, 'mSNG':5, 'uSNG':2}
 
 def normalize_version(v):
     return [int(x) for x in re.sub(r'(\.0+)*$','', v).split(".")]
@@ -106,7 +106,7 @@ class Satoshis(object):
         return 'Satoshis(%d)'%self.value
 
     def __str__(self):
-        return format_satoshis(self.value) + " BTC"
+        return format_satoshis(self.value) + " SNG"
 
 class Fiat(object):
     def __new__(cls, value, ccy):
