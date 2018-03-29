@@ -291,7 +291,7 @@ class TestTransaction(unittest.TestCase):
         self._run_naive_tests_on_tx(raw_tx, txid)
 
 
-# these transactions are from Bitcoin Core unit tests --->
+# these transactions are from SnowGem Core unit tests --->
 # https://github.com/bitcoin/bitcoin/blob/11376b5583a283772c82f6d32d0007cdbf5b8ef0/src/test/data/tx_valid.json
 
     def test_txid_bitcoin_core_0001(self):
@@ -754,7 +754,7 @@ class TestTransaction(unittest.TestCase):
         txid = '45d17fb7db86162b2b6ca29fa4e163acf0ef0b54110e49b819bda1f948d423a3'
         self._run_naive_tests_on_tx(raw_tx, txid)
 
-# txns from Bitcoin Core ends <---
+# txns from SnowGem Core ends <---
 
 
 class NetworkMock(object):
