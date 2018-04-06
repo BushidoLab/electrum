@@ -40,7 +40,7 @@ def inv_dict(d):
     return {v: k for k, v in d.items()}
 
 
-base_units = {'SNG':8, 'mSNG':5, 'uSNG':2}
+base_units = {'SNGM':8, 'mSNGM':5, 'uSNGM':2}
 
 def normalize_version(v):
     return [int(x) for x in re.sub(r'(\.0+)*$','', v).split(".")]
@@ -106,7 +106,7 @@ class Satoshis(object):
         return 'Satoshis(%d)'%self.value
 
     def __str__(self):
-        return format_satoshis(self.value) + " SNG"
+        return format_satoshis(self.value) + " SNGM"
 
 class Fiat(object):
     def __new__(cls, value, ccy):
@@ -305,7 +305,7 @@ def android_data_dir():
     return PythonActivity.mActivity.getFilesDir().getPath() + '/data'
 
 def android_headers_dir():
-    d = android_ext_dir() + '/org.electrum_sng.electrum'
+    d = android_ext_dir() + '/org.electrum_sngm.electrum'
     if not os.path.exists(d):
         os.mkdir(d)
     return d
@@ -395,11 +395,11 @@ def user_dir():
     if 'ANDROID_DATA' in os.environ:
         return android_check_data_dir()
     elif os.name == 'posix':
-        return os.path.join(os.environ["HOME"], ".electrum-sng")
+        return os.path.join(os.environ["HOME"], ".electrum-sngm")
     elif "APPDATA" in os.environ:
-        return os.path.join(os.environ["APPDATA"], "Electrum-sng")
+        return os.path.join(os.environ["APPDATA"], "Electrum-sngm")
     elif "LOCALAPPDATA" in os.environ:
-        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-sng")
+        return os.path.join(os.environ["LOCALAPPDATA"], "Electrum-sngm")
     else:
         #raise Exception("No home directory found in environment variables.")
         return
