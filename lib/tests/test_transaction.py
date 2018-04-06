@@ -167,7 +167,7 @@ class TestTransaction(unittest.TestCase):
         self.assertEqual(tx.txid(), "b97f9180173ab141b61b9f944d841e60feec691d6daab4d4d932b24dd36606fe")
 
     def test_get_address_from_output_script(self):
-        # the inverse of this test is in test_bitcoin: test_address_to_script
+        # the inverse of this test is in test_snowgem: test_address_to_script
         addr_from_script = lambda script: transaction.get_address_from_output_script(bfh(script))
         ADDR = transaction.TYPE_ADDRESS
 
