@@ -27,7 +27,7 @@ if platform.system() in ['Linux', 'FreeBSD', 'DragonFly']:
     parser.add_argument('--root=', dest='root_path', metavar='dir', default='/')
     opts, _ = parser.parse_known_args(sys.argv[1:])
     usr_share = os.path.join(sys.prefix, "share")
-    icons_dirname = 'pixmaps'
+    icons_dirname = 'pixmaps/'
     if not os.access(opts.root_path + usr_share, os.W_OK) and \
        not os.access(opts.root_path, os.W_OK):
         icons_dirname = 'icons'
