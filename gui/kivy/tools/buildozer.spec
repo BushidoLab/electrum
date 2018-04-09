@@ -4,10 +4,10 @@
 title = SnowGem Electrum
 
 # (str) Package name
-package.name = Electrum_SNGM
+package.name = Electrum_XSG
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.electrum_sngm
+package.domain = org.electrum_xsg
 
 # (str) Source code where the main.py live
 source.dir = .
