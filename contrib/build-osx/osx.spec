@@ -5,8 +5,8 @@ from PyInstaller.utils.hooks import collect_data_files, collect_submodules, coll
 import sys
 import os
 
-PACKAGE='Electrum'
-PYPKG='electrum'
+PACKAGE='SnowGem Electrum'
+PYPKG='electrum_xsg'
 MAIN_SCRIPT='electrum'
 ICONS_FILE='electrum.icns'
 
