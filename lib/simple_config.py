@@ -16,9 +16,9 @@ FEE_DEPTH_TARGETS = [10000000, 5000000, 2000000, 1000000, 500000, 200000, 100000
 # satoshi per kbyte
 FEERATE_MAX_DYNAMIC = 1500000
 FEERATE_WARNING_HIGH_FEE = 600000
-FEERATE_FALLBACK_STATIC_FEE = 150000
+FEERATE_FALLBACK_STATIC_FEE = 5000
 FEERATE_DEFAULT_RELAY = 1000
-FEERATE_STATIC_VALUES = [5000, 10000, 20000, 30000, 50000, 70000, 100000, 150000, 200000, 300000]
+FEERATE_STATIC_VALUES = [0, 5000, 10000, 20000, 30000, 50000, 70000, 100000, 150000, 200000, 300000]
 
 
 config = None
@@ -406,7 +406,7 @@ class SimpleConfig(PrintError):
         else:
             fee_rate = self.fee_per_kb()
             pos = self.static_fee_index(fee_rate)
-            maxp = 9
+            maxp = 10
         return maxp, pos, fee_rate
 
     def static_fee(self, i):
