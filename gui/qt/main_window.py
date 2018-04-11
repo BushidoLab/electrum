@@ -786,6 +786,12 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         grid.setSpacing(8)
         grid.setColumnStretch(3, 1)
 
+        pLabel = QLabel()
+        pLabel.setStyleSheet("QLabel { color : red; }")
+        pLabel.setText("*Note: Do not mine to electrum wallet")
+        #QLabel(_('Note: Do not mine to electrum wallet'))
+        grid.addWidget(pLabel, 0, 0)
+
         self.receive_address_e = ButtonsLineEdit()
         self.receive_address_e.addCopyButton(self.app)
         self.receive_address_e.setReadOnly(True)
@@ -793,23 +799,23 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         self.receive_address_label = HelpLabel(_('Receiving address'), msg)
         self.receive_address_e.textChanged.connect(self.update_receive_qr)
         self.receive_address_e.setFocusPolicy(Qt.NoFocus)
-        grid.addWidget(self.receive_address_label, 0, 0)
-        grid.addWidget(self.receive_address_e, 0, 1, 1, -1)
+        grid.addWidget(self.receive_address_label, 1, 0)
+        grid.addWidget(self.receive_address_e, 1, 1, 1, -1)
 
         self.receive_message_e = QLineEdit()
-        grid.addWidget(QLabel(_('Description')), 1, 0)
-        grid.addWidget(self.receive_message_e, 1, 1, 1, -1)
+        grid.addWidget(QLabel(_('Description')), 2, 0)
+        grid.addWidget(self.receive_message_e, 2, 1, 1, -1)
         self.receive_message_e.textChanged.connect(self.update_receive_qr)
 
         self.receive_amount_e = BTCAmountEdit(self.get_decimal_point)
-        grid.addWidget(QLabel(_('Requested amount')), 2, 0)
-        grid.addWidget(self.receive_amount_e, 2, 1)
+        grid.addWidget(QLabel(_('Requested amount')), 3, 0)
+        grid.addWidget(self.receive_amount_e, 3, 1)
         self.receive_amount_e.textChanged.connect(self.update_receive_qr)
 
         self.fiat_receive_e = AmountEdit(self.fx.get_currency if self.fx else '')
         if not self.fx or not self.fx.is_enabled():
             self.fiat_receive_e.setVisible(False)
-        grid.addWidget(self.fiat_receive_e, 2, 2, Qt.AlignLeft)
+        grid.addWidget(self.fiat_receive_e, 3, 2, Qt.AlignLeft)
         self.connect_fields(self, self.receive_amount_e, self.fiat_receive_e, None)
 
         self.expires_combo = QComboBox()
@@ -822,13 +828,13 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
             _('Expired requests have to be deleted manually from your list, in order to free the corresponding SnowGem addresses.'),
             _('The bitcoin address never expires and will always be part of this electrum wallet.'),
         ])
-        grid.addWidget(HelpLabel(_('Request expires'), msg), 3, 0)
-        grid.addWidget(self.expires_combo, 3, 1)
+        grid.addWidget(HelpLabel(_('Request expires'), msg), 4, 0)
+        grid.addWidget(self.expires_combo, 4, 1)
         self.expires_label = QLineEdit('')
         self.expires_label.setReadOnly(1)
         self.expires_label.setFocusPolicy(Qt.NoFocus)
         self.expires_label.hide()
-        grid.addWidget(self.expires_label, 3, 1)
+        grid.addWidget(self.expires_label, 4, 1)
 
         self.save_request_button = QPushButton(_('Save'))
         self.save_request_button.clicked.connect(self.save_payment_request)
@@ -845,7 +851,7 @@ class ElectrumWindow(QMainWindow, MessageBoxMixin, PrintError):
         buttons.addStretch(1)
         buttons.addWidget(self.save_request_button)
         buttons.addWidget(self.new_request_button)
-        grid.addLayout(buttons, 4, 1, 1, 2)
+        grid.addLayout(buttons, 5, 1, 1, 2)
 
         self.receive_requests_label = QLabel(_('Requests'))
 
