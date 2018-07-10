@@ -52,6 +52,9 @@ class BitcoinMainnet:
     HEADERS_URL = "http://electrum.snowgem.org/blockchain_headers"
     EQUIHASH_N = 200
     EQUIHASH_K = 9
+    EQUIHASH_N_NEW = 144
+    EQUIHASH_K_NEW = 5
+    FORK_BLOCK = 266000
     CHUNK_SIZE = 200
 
     XPRV_HEADERS = {

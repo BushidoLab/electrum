@@ -175,9 +175,15 @@ class Blockchain(util.PrintError):
             raise BaseException("insufficient proof of work: %s vs target %s" % (int('0x' + _powhash, 16), target))
         nonce = uint256_from_bytes(str_to_hash(header.get('nonce')))
         n_solution = vector_from_bytes(base64.b64decode(header.get('n_solution').encode('utf8')))
-        if not is_gbp_valid(serialize_header(header), nonce, n_solution,
-            constants.net.EQUIHASH_N, constants.net.EQUIHASH_K):
+        height = header['block_height']
+        if height > constants.net.FORK_BLOCK:
+            if not is_gbp_valid(serialize_header(header), nonce, n_solution,
+            constants.net.EQUIHASH_N_NEW, constants.net.EQUIHASH_K_NEW):
             raise BaseException("Equihash invalid")
+        else:
+            if not is_gbp_valid(serialize_header(header), nonce, n_solution,
+                constants.net.EQUIHASH_N, constants.net.EQUIHASH_K):
+                raise BaseException("Equihash invalid")
 
     def verify_chunk(self, index, data):
         num = len(data) // bitcoin.HEADER_SIZE
