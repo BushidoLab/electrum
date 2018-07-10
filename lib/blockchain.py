@@ -179,7 +179,7 @@ class Blockchain(util.PrintError):
         if height > constants.net.FORK_BLOCK:
             if not is_gbp_valid(serialize_header(header), nonce, n_solution,
             constants.net.EQUIHASH_N_NEW, constants.net.EQUIHASH_K_NEW):
-            raise BaseException("Equihash invalid")
+                raise BaseException("Equihash invalid")
         else:
             if not is_gbp_valid(serialize_header(header), nonce, n_solution,
                 constants.net.EQUIHASH_N, constants.net.EQUIHASH_K):
