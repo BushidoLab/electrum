@@ -50,11 +50,11 @@ class BitcoinMainnet:
     DEFAULT_SERVERS = read_json('servers.json', {})
     CHECKPOINTS = read_json('checkpoints.json', [])
     HEADERS_URL = ""
-    EQUIHASH_N = 144
-    EQUIHASH_K = 5
+    EQUIHASH_N = 200
+    EQUIHASH_K = 9
     EQUIHASH_N_NEW = 144
     EQUIHASH_K_NEW = 5
-    FORK_BLOCK = 266000
+    FORK_BLOCK = 16740
     CHUNK_SIZE = 200
 
     XPRV_HEADERS = {
