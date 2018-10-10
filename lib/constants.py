@@ -41,17 +41,17 @@ class BitcoinMainnet:
 
     TESTNET = False
     WIF_PREFIX = 0x80
-    ADDRTYPE_P2PKH = [0x1C, 0x28]
-    ADDRTYPE_P2SH = [0x1C, 0x2D]
+    ADDRTYPE_P2PKH = [0x05, 0x82]
+    ADDRTYPE_P2SH = [0x53, 0x89]
     ADDRTYPE_SHIELDED = [0x16, 0x9A]
-    SEGWIT_HRP = "bc"
-    GENESIS = "00068b35729d9d2b0c294ff1fe9af0094740524311a131de40e7f705e4c29a5b"
+    SEGWIT_HRP = "bc" #TODO anon has no segwit
+    GENESIS = "053a237d7ad7106e341a403286604df55bfe6f301fc9fff03a06f81c8c565b34"
     DEFAULT_PORTS = {'t': '50001', 's': '50002'}
     DEFAULT_SERVERS = read_json('servers.json', {})
     CHECKPOINTS = read_json('checkpoints.json', [])
-    HEADERS_URL = "http://electrum.snowgem.org/blockchain_headers"
-    EQUIHASH_N = 200
-    EQUIHASH_K = 9
+    HEADERS_URL = ""
+    EQUIHASH_N = 144
+    EQUIHASH_K = 5
     EQUIHASH_N_NEW = 144
     EQUIHASH_K_NEW = 5
     FORK_BLOCK = 266000

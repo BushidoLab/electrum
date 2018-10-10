@@ -30,12 +30,13 @@ if [ -d "~/.pyenv" ]; then
 else
   curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash > /dev/null 2>&1
 fi
-PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install -s $PYTHON_VERSION && \
+PYTHON_CONFIGURE_OPTS="--enable-framework" pyenv install -v -s $PYTHON_VERSION && \
 pyenv global $PYTHON_VERSION || \
 fail "Unable to use Python $PYTHON_VERSION"
 
 
 info "Installing pyinstaller"
+pip --upgrade pip==9.0.3
 python3 -m pip install git+https://github.com/ecdsa/pyinstaller@fix_2952 -I --user || fail "Could not install pyinstaller"
 
 info "Using these versions for building $PACKAGE:"

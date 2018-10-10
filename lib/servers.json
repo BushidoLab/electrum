@@ -1,11 +1,4 @@
 {
-    "electrumsvr.snowgem.org": 
-    {
-    	"s":"50002"
-    },
-	"electrumsvr2.snowgem.org": 
-    {
-    	"s":"50002"
-    }
+    "198.58.124.152": {"s":"50002"}
 }
 
