@@ -176,7 +176,7 @@ class Blockchain(util.PrintError):
         nonce = uint256_from_bytes(str_to_hash(header.get('nonce')))
         n_solution = vector_from_bytes(base64.b64decode(header.get('n_solution').encode('utf8')))
         height = header['block_height']
-        if height > constants.net.FORK_BLOCK:
+        if height == 0 or height > constants.net.FORK_BLOCK:
             if not is_gbp_valid(serialize_header(header), nonce, n_solution,
             constants.net.EQUIHASH_N_NEW, constants.net.EQUIHASH_K_NEW):
                 raise BaseException("Equihash invalid")
@@ -262,7 +262,9 @@ class Blockchain(util.PrintError):
         delta = header.get('block_height') - self.checkpoint
         data = serialize_header(header)
         assert delta == self.size()
-        assert len(data) == bitcoin.HEADER_SIZE
+        print("Before assert")
+        print(len(data))
+        assert len(data) == bitcoin.HEADER_SIZE or  len(data) == bitcoin.HEADER_SIZE_NEW
         self.write(data, delta*bitcoin.HEADER_SIZE)
         self.swap_with_parent()
 
