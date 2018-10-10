@@ -182,6 +182,7 @@ def push_script(x):
 # https://github.com/zcash/zcash/blob/master/qa/rpc-tests/test_framework/mininode.py
 
 HEADER_SIZE = 1487
+HEADER_SIZE_NEW = 241
 
 hash_to_str = lambda x: bytes(reversed(x)).hex()
 str_to_hash = lambda x: bytes(reversed(bytes.fromhex(x)))
