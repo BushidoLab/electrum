@@ -36,7 +36,7 @@ fail "Unable to use Python $PYTHON_VERSION"
 
 
 info "Installing pyinstaller"
-python3 -m pip install git+https://github.com/ecdsa/pyinstaller@fix_2952 -I --user || fail "Could not install pyinstaller"
+sudo -H python3 -m pip install git+https://github.com/pyinstaller/pyinstaller@v3.3.1 -I --user || fail "Could not install pyinstaller"
 
 info "Using these versions for building $PACKAGE:"
 sw_vers
@@ -60,17 +60,17 @@ cp    $BUILDDIR/electrum-icons/icons_rc.py ./gui/qt/
 
 
 info "Downloading libusb..."
-curl https://homebrew.bintray.com/bottles/libusb-1.0.21.el_capitan.bottle.tar.gz | \
+curl https://homebrew.bintray.com/bottles/libusb-1.0.21.high_sierra.bottle.tar.gz | \
 tar xz --directory $BUILDDIR
 cp $BUILDDIR/libusb/1.0.21/lib/libusb-1.0.dylib contrib/build-osx
 
 info "Installing requirements..."
-python3 -m pip install -Ir ./contrib/deterministic-build/requirements.txt --user && \
-python3 -m pip install -Ir ./contrib/deterministic-build/requirements-binaries.txt --user || \
+sudo -H python3 -m pip install -Ir ./contrib/deterministic-build/requirements.txt --user && \
+sudo -H python3 -m pip install -Ir ./contrib/deterministic-build/requirements-binaries.txt --user || \
 fail "Could not install requirements"
 
 info "Installing hardware wallet requirements..."
-python3 -m pip install -Ir ./contrib/deterministic-build/requirements-hw.txt --user || \
+sudo -H python3 -m pip install -Ir ./contrib/deterministic-build/requirements-hw.txt --user || \
 fail "Could not install hardware wallet requirements"
 
 info "Building $PACKAGE..."
